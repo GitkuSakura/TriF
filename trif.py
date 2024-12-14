@@ -39,7 +39,7 @@ class Des:
                 setattr(instance, self.storage_name, (x, Cos()))
             elif method == 'tan':
                 setattr(instance, self.storage_name, (x, Tan()))
-#我将使用策略形态出击
+
 class Sin(Trifmeta):
     def c(self,obj):
         try:
@@ -73,14 +73,14 @@ class Trif:
     def __repr__(self):
         fmt=f"<result:{{:.{Trif.ds}f}}>"
         return fmt.format(self.value)
-    def __add__(self,obj):return self.value+obj.value
-    def __sub__(self,obj):return self.value - obj.value
-    def __mul__(self,obj):return self.value * obj.value
-    def __truediv__(self,obj):return self.value * obj.value
+    def __add__(self,obj):return self.value+obj.value if isinstance(obj,Trif) else self.value+obj
+    def __sub__(self,obj):return self.value - obj.value if isinstance(obj,Trif) else self.value-obj
+    def __mul__(self,obj):return self.value * obj.value if isinstance(obj,Trif) else self.value*obj
+    def __truediv__(self,obj):return self.value * obj.value if isinstance(obj,Trif) else self.value/obj
 
 
 
-# 调试用的
+
 # t = Trif
 # print(t('sin(30)'))
-# Made by MikuSakura (thinking and writing for one morning(not easy))
+
